@@ -33,7 +33,6 @@ kubectl apply -f dashboard-adminuser.yml
 kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
 
 echo -- run proxy as: 'kubectl proxy --address='0.0.0.0' --disable-filter=true' --
-echo -- access via k8s api: 'http://127.0.0.1:36715/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/'  --
-
+echo -- access via k8s api: 'http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login' --
 #kubectl -n kubernetes-dashboard delete serviceaccount admin-user
 #kubectl -n kubernetes-dashboard delete clusterrolebinding admin-user
