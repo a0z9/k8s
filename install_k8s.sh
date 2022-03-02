@@ -1,4 +1,4 @@
-echo installing k8s master node...
+tput setaf 2 && echo installing k8s master node... && tput setaf 7
 
 ufw disable &&  swapoff -a && sed -i 's/^\/swap/#\/swap/' /etc/fstab
 
@@ -48,13 +48,13 @@ apt-get update && apt-get install -y kubelet kubeadm kubectl
 
 service docker restart
 
-tput setaf 2; echo "start to pulling images.."
+tput setaf 2 && echo "start to pulling images.." && tput setaf 7
 kubeadm config images pull
 
-tput setaf 2; echo "init kube  ..  pod-network: 10.244.0.0/16"
+tput setaf 2 && echo "init kube  ..  pod-network: 10.244.0.0/16" && tput setaf 7
 kubeadm init --pod-network-cidr=10.244.0.0/16
 
-tput setaf 2; echo "start set up vars, alias and kubectl autocompleteion rules.."
+tput setaf 2 && echo "start set up vars, alias and kubectl autocompleteion rules.." && tput setaf 7
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
@@ -69,6 +69,9 @@ EOT
 echo 'source <(kubectl completion bash)' >> /etc/bash.bashrc
 echo 'alias k=kubectl' >> /etc/bash.bashrc
 echo 'complete -F __start_kubectl k' >> /etc/bash.bashrc
+
+tput setaf 2 && echo "Done. Next steps: 1. Install overlay driver on master (node) - here. 2. Add worker nodes" && tput setaf 7
+
 
 #kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
