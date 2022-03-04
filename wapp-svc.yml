@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2022-03-04T08:54:22Z"
+  labels:
+    k8s-app: wapp5
+  name: wapp5
+  namespace: default
+  resourceVersion: "127992"
+  uid: 7ce3aae2-b4bf-4aac-a692-b6348793f22e
+spec:
+  clusterIP: 10.110.29.220
+  clusterIPs:
+  - 10.110.29.220
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: tcp-8090-8080-cxqdc
+    nodePort: 31132
+    port: 8090
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    k8s-app: wapp5
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}

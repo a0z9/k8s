@@ -1,0 +1,136 @@
+    1  poweroff
+    2  docker ps
+    3  reboot
+    4  git
+    5  sudo apt install -y git
+    6  git clone https://github.com/a0z9/docker2.git
+    7  ls docker2/scripts/
+    8  ls -la docker2/scripts/
+    9  docker2/scripts/install-docker
+   10  docker ps
+   11  docker2/scripts/install-docker-compose 
+   12  docker ps
+   13  docker network ls
+   14  git clone https://github.com/a0z9/k8s.git
+   15  cd k8s/
+   16  ./install_k8s_flannel.sh 
+   17  sudo systemctl status kubelet
+   18  history
+   19  mkdir history
+   20  history > history/h1_k8s
+   21  git add .
+   22  git commit -m 'history added'
+   23  git config --global user.email a0z9@rambler.ru
+   24  git config --global user.name Andrei
+   25  git commit -m 'history added'
+   26  git push
+   27  k get pod -o wide
+   28  k get services -o wide
+   29  k create deployment ng-depl --image=nginx
+   30  k get deployments.apps 
+   31  k expose deployment ng-depl ng-svc2 --port 81 --target-port 80 --type NodePort
+   32  k expose deployment ng-depl --name ng-svc2 --port 81 --target-port 80 --type NodePort
+   33  k get svc
+   34  k delete svc ng-depl 
+   35  k get svc
+   36  k get svc ng-svc2 -o wide
+   37  history
+   38  k get svc ng-svc2 -o wide
+   39  k get svc ng-svc2 -o yaml
+   40  k get pod -o wide
+   41  k scale deployment ng-depl --replicas=2
+   42  k get pod -o wide
+   43  k scale deployment ng-depl --replicas=3
+   44  k get pod -o wide
+   45  k get replica 
+   46  k get replicasets.apps 
+   47  k get pod -o wide
+   48  k get nodes 
+   49  k get pod -o wide
+   50  k get svc
+   51  k get pod
+   52  k get pod -o wide
+   53  k get nodes 
+   54  k get pod -o wide
+   55  k get nodes 
+   56  k get pod -o wide --
+   57  k get pod -o wide
+   58  k get pod -o wide --
+   59  cd ../k8s/
+   60  ls -la
+   61  cat install_kube_dashboard.sh 
+   62  ./install_kube_dashboard.sh 
+   63  k get pod -o wide --
+   64  k history
+   65  history
+   66  k top node 
+   67  kubectl apply -f https://raw.githubusercontent.com/pythianarora/total-practice/master/sample-kubernetes-code/metrics-server.yaml
+   68  k top node 
+   69  k top pod 
+   70  k top pod --all-namespaces 
+   71  k top service --all-namespaces 
+   72  k top svc --all-namespaces 
+   73  k top svc
+   74  k top 
+   75  k top node dock03
+   76  k top node
+   77  k explain svc
+   78  k get svc wapp5 
+   79  k get svc wapp5 -o yaml
+   80  k get svc wapp5 -o yaml > wapp-svc.yml
+   81  k create serviceaccount readers
+   82  k get serviceaccounts readers 
+   83  k get serviceaccounts readers -o yaml
+   84  k get secret 
+   85  k get secret readers-token-jr4mv 
+   86  k get secret readers-token-jr4mv -o yaml
+   87  k delete serviceaccounts readers 
+   88  k get secret
+   89  k create serviceaccount readers --namespace kubernetes-dashboard 
+   90  k get secret
+   91* 
+   92  export TOKENNAME=$(kubectl -n kube-system get serviceaccount/<service-account-name> -o jsonpath='{.secrets[0].name}')
+   93  export TOKENNAME=$(kubectl -n kube-system get serviceaccount/readers -o jsonpath='{.secrets[0].name}')
+   94  k get secret -o yaml
+   95  k get secret
+   96  k get secret --all-namespaces 
+   97  k get secret readers-token-fmh5z -o yaml
+   98  k get secret  -o yaml
+   99  k get secret --all-namespaces
+  100  k get secret --all-namespaces readers-token-fmh5z
+  101  k get secret readers-token-fmh5z
+  102  k get secret readers-token-fmh5z --namespace kubernetes-dashboard 
+  103  k get secret readers-token-fmh5z --namespace kubernetes-dashboard -o yaml
+  104  k get secret readers-token-fmh5z --namespace kubernetes-dashboard -o yaml > config
+  105  vim role.yml
+  106  k apply -f role.yml 
+  107  vim role.yml
+  108* 
+  109  cp role.yml role-binding.yml 
+  110  vim role-binding.yml 
+  111  k apply -f role-binding.yml 
+  112  vim role-binding.yml 
+  113  k apply -f role-binding.yml 
+  114  vim role-binding.yml 
+  115  k apply -f role-binding.yml 
+  116  vim role-binding.yml 
+  117  k apply -f role-binding.yml 
+  118  vim role-binding.yml 
+  119  k apply -f role-binding.yml 
+  120  k get secret readers-token-fmh5z --namespace kubernetes-dashboard -o yaml
+  121  kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/READERS -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
+  122  kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/readers -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
+  123  vim role.yml 
+  124  l apply -f role.yml 
+  125  k apply -f role.yml 
+  126  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+  127  chmod +x get_helm.sh 
+  128  ./get_helm.sh 
+  129  helm version
+  130  helm repo add stable https://charts.helm.sh/stable
+  131  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  132  helm repo update
+  133  helm search repo prometheus-community
+  134  helm install stable prometheus-community/kube-prometheus-stack
+  135  echo "grafana: admin/prom-operator" > grafana_defaults_creds
+  136  history > history/h2 

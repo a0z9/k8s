@@ -1,0 +1,10 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+    name: readers-cr
+    namespace: readers
+rules:
+  - apiGroups: [""]
+    resources: ["pods","nodes","services","namespaces"]
+    verbs: ["get","list", "watch"] 
+

@@ -1,0 +1,15 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+    name: readers-cr-bind
+    namespace: readers
+subjects:
+
+        - kind: ServiceAccount
+          name: readers
+          namespace: kubernetes-dashboard
+roleRef:
+          kind: ClusterRole
+          name: readers-cr
+          apiGroup: 'rbac.authorization.k8s.io'         
+
