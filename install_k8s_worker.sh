@@ -48,11 +48,19 @@ apt-get update && apt-get install -y kubelet kubeadm kubectl
 
 service docker restart
 
+# this 2 lines remove the bug "Unimplemented desc = unknown service runtime.v1alpha2.ImageService"
+# for k8s version > 1.19.*, containerd.io > 1.3.*, os = ubuntu 20.04
+rm /etc/containerd/config.toml
+systemctl restart containerd
+
 tput setaf 2 && echo "start to pulling images.." && tput setaf 7
 kubeadm config images pull
 
 tput setaf 2 && echo "add worker node tu kube..." && tput setaf 7
 
+
+# this line add node to cluster, should be passed as parameter!!
+# get from master node by command: kubeadm token create --print-join-command
 $(echo $1)
 
 tput setaf 2 && echo "start set up vars, alias and kubectl autocompleteion rules.." && tput setaf 7
@@ -71,8 +79,7 @@ echo 'source <(kubectl completion bash)' >> /etc/bash.bashrc
 echo 'alias k=kubectl' >> /etc/bash.bashrc
 echo 'complete -F __start_kubectl k' >> /etc/bash.bashrc
 
+# flannel add only on MASTER node!!!
 #kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-
-
 
 

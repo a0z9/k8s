@@ -1,4 +1,4 @@
-sudo ./install_k8s.sh
+sudo -s ./install_k8s.sh
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config

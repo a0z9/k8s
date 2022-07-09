@@ -48,9 +48,12 @@ apt-get update && apt-get install -y kubelet kubeadm kubectl
 
 service docker restart
 
-tput setaf 2 && echo "start to pulling images.." && tput setaf 7
-kubeadm config images pull
+# this 2 lines remove the bug "Unimplemented desc = unknown service runtime.v1alpha2.ImageService"
+# for k8s version > 1.19.*, containerd.io > 1.3.*, os = ubuntu 20.04
+rm /etc/containerd/config.toml
+systemctl restart containerd
 
+kubeadm config images pull
 tput setaf 2 && echo "init kube  ..  pod-network: 10.244.0.0/16" && tput setaf 7
 kubeadm init --pod-network-cidr=10.244.0.0/16
 
