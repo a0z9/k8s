@@ -61,6 +61,7 @@ tput setaf 2 && echo "add worker node tu kube..." && tput setaf 7
 
 # this line add node to cluster, should be passed as parameter!!
 # get from master node by command: kubeadm token create --print-join-command
+# example: kubeadm join 172.20.10.4:6443 --token hjngfv.jp4zrhw3qmz3zv3y --discovery-token-ca-cert-hash sha256:73198564fc5e14c8ac910ed836a854d14349a05cbf557e020616e14e22bb15d7
 $(echo $1)
 
 tput setaf 2 && echo "start set up vars, alias and kubectl autocompleteion rules.." && tput setaf 7
