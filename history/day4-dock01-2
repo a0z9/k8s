@@ -1,0 +1,375 @@
+    1  poweroff
+    2  sudo apt update
+    3  ip a
+    4  ping 192.168.56.1
+    5  ping 192.168.56.101
+    6  sudo apt install ssh -y
+    7  cat .bash_history 
+    8  lsb_release -a
+    9  sudo apt-get remove docker docker-engine docker.io containerd runc
+   10  sudo apt install -y ca-certificates curl gnupg
+   11  sudo mkdir -p /etc/apt/keyrings
+   12  sudo ls -la /etc/apt/keyrings/
+   13  su
+   14  sudo apt update
+   15  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+   16  sudo systemctl status docker
+   17  sudo service docker status
+   18  su
+   19  sudo docker --version
+   20  docker images
+   21  history 
+   22  su
+   23  sudo apt-cache search docker-ce
+   24  sudo apt update
+   25  ping 13.32.123.42
+   26  ping ya.ru
+   27  docker images
+   28  sudo docker images
+   29  sudo groupadd docker
+   30  sudo usermod -aG docker $USER
+   31  newgrp docker
+   32  echo $USER
+   33  docker images
+   34  history
+   35  reboot
+   36  ls -la
+   37  docker images
+   38  docker pull a0z9/bbox00:v.1
+   39  docker images
+   40  docker run -i --name bb1 a0z9/bbox00:v.1
+   41  docker run -itd --name bb1 a0z9/bbox00:v.1
+   42  docker run -itd --name bb2 a0z9/bbox00:v.1
+   43  docker ps -a
+   44  docker rm bb1
+   45  docker ps -a
+   46  docker attach --detach-keys "ctrl-x" bb2 
+   47  docker ps -a
+   48  docker images
+   49  docker ps -a
+   50  docker stats
+   51  cd ..
+   52  git add .
+   53  git status
+   54  git commit -m 'custom network added to yaml'
+   55  git push
+   56  git pull
+   57  cd app4/
+   58  vim docker-compose.yml 
+   59  docker compose down
+   60  vim docker-compose.yml 
+   61  docker compose down
+   62  docker compose up -d
+   63  docker stats
+   64  docker compose down
+   65  docker stack deploy --compose-file docker-compose.yml 
+   66  docker stack deploy --compose-file docker-compose.yml stack1
+   67  vim docker-compose.yml 
+   68  docker compose up -d
+   69  vim docker-compose.yml 
+   70  docker compose up -d
+   71  docker stats
+   72  docker compose down
+   73  cp docker-compose.yml  docker-compose-stack.yml 
+   74  vim docker-compose-stack.yml 
+   75  docker stack deploy --compose-file docker-compose-stack.yml stack1
+   76  vim docker-compose-stack.yml 
+   77  docker stack deploy --compose-file docker-compose-stack.yml stack1
+   78  vim docker-compose-stack.yml 
+   79  docker stack deploy --compose-file docker-compose-stack.yml stack1
+   80  vim docker-compose-stack.yml 
+   81  docker stack deploy --compose-file docker-compose-stack.yml stack1
+   82  vim docker-compose.yml 
+   83  docker compose ps
+   84  docker compose ps -a
+   85  docker compose up -d
+   86  docker stats
+   87  cd ..
+   88  history 
+   89  su
+   90  sudo mkdir -p /etc/docker/certs.d/dock02:5000
+   91  sudo cp ca.crt /etc/docker/certs.d/dock02:5000/
+   92  sudo vim /etc/hists
+   93  sudo vim /etc/hosts
+   94  ping dock02
+   95  docker pull dock02:5000/bbimage:0.2
+   96  docker images
+   97  docker rmi ae 12 -f
+   98  docker images
+   99  docker pull dock02:5000/bbimage:0.2
+  100  docker pull dock01:5000/bbimage:0.2
+  101  docker pull dock02:5000/bbimage:0.2
+  102  docker pull dock02:5000/wapp:0.1
+  103  docker compose version
+  104  ls
+  105  git clone https://github.com/a0z9/docker
+  106  cd docker/
+  107  ls
+  108  mkdir app3
+  109  cd app2
+  110  cd ../app3
+  111  vim docker-compose.yml
+  112  docker network ls
+  113  docker compose run -d
+  114  docker compose up -d
+  115  vim docker-compose.yml
+  116  docker compose up -d
+  117  vim docker-compose.yml
+  118  docker service ps
+  119  docker service 
+  120  docker service ps gstsvc1
+  121  docker ps
+  122  docker compose --help
+  123  docker compose top
+  124  docker network ls
+  125  docker network inspect app3_default 
+  126  docker compose down
+  127  vim docker-compose.yml
+  128  docker compose up -d
+  129  vim docker-compose.yml
+  130  docker compose up -d
+  131  docker ps 
+  132  docker volume ls
+  133  docker volume inspect 718b3923f0a06c9b275b30e0c0d1be6f1b353cbea10bd0a7855d62453277ad61 
+  134  docker inspect gst2
+  135  docker compose down
+  136  docker volume ls
+  137  docker compose up -d
+  138  docker volume ls
+  139  docker compose down
+  140  cd ..
+  141  git add .
+  142  git status
+  143  git commit -m 'docker compose on host dock01'
+  144  git config --global user.email a0z9@rambler.ru
+  145  git config --global user.name Andrei
+  146  git commit -m 'docker compose on host dock01
+  147  git push 
+  148  cd app3
+  149  cp docker-compose.yml  docker-compose-wapp.yml 
+  150  docker images
+  151  vim  docker-compose-wapp.yml 
+  152  docker compose up -d -f docker-compose-wapp.yml
+  153  docker compose -d -f docker-compose-wapp.yml up
+  154  docker compose -f docker-compose-wapp.yml up -d
+  155  echo ${hostname}
+  156  export
+  157  hostname
+  158  export HOSTNAME=${hostname}
+  159  docker compose -f docker-compose-wapp.yml up -d
+  160  export
+  161  export HOSTNAME=`hostname`
+  162  export
+  163  docker compose -f docker-compose-wapp.yml up -d
+  164  docker compose --help
+  165  vim  docker-compose-wapp.yml 
+  166  docker compose -f docker-compose-wapp.yml up -d
+  167  vim  docker-compose-wapp.yml 
+  168  docker compose -f docker-compose-wapp.yml up -d
+  169  docker compose -f docker-compose-wapp.yml -d up
+  170  vim  docker-compose-wapp.yml 
+  171  docker compose -f docker-compose-wapp.yml -d up
+  172  docker compose -f docker-compose-wapp.yml up -ds
+  173  docker compose -f docker-compose-wapp.yml up -d
+  174  vim  docker-compose-wapp.yml 
+  175  docker compose -f docker-compose-wapp.yml down
+  176  docker compose -f docker-compose-wapp.yml up -d
+  177  vim  docker-compose-wapp.yml 
+  178  docker volume ls
+  179  docker ps
+  180  cd ..
+  181  git add .
+  182  git status 
+  183  git commit -m 'yaml for wapp'
+  184  git push
+  185  docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent:2.9.3
+  186  history
+  187  ls
+  188  mkdir app4
+  189  cd app4
+  190  cp ../app3/docker-compose.yml .
+  191  vim docker-compose.yml 
+  192  docker compose version
+  193  docker compose up -d
+  194  vim docker-compose.yml 
+  195  docker compose up -d
+  196  vim docker-compose.yml 
+  197  docker compose ps
+  198  docker compose ps -a
+  199  docker compose up -d
+  200  docker network ls
+  201  docker network net56 inspect 
+  202  docker network inspect net56 
+  203  ip a
+  204  cd docker/
+  205  history >> history/day3_host1
+  206  git add .
+  207  git status
+  208  git commit -m 'hist + yaml resources'
+  209  git push
+  210  cd app4
+  211  ls
+  212  vim docker-compose.
+  213  vim docker-compose.yml 
+  214  docker compose down
+  215  vim docker-compose.yml 
+  216  docker compose down
+  217  vim docker-compose.yml 
+  218  docker compose up -d
+  219  docker --version
+  220  docker composer version
+  221  docker compose version
+  222  docker-compose version
+  223  sudo apt rm docker-compose-plugin
+  224  sudo apt remove docker-compose-plugin
+  225  cd ../scripts/
+  226  ls -la
+  227  vim install-docker-compose 
+  228  ./install-docker-compose 
+  229  docker-compose version
+  230  cd app4
+  231  cd ../app4
+  232  ls
+  233  vim docker-compose.yml 
+  234  docker-compose up -d
+  235  docker stats
+  236  docker-compose ps
+  237  sudo vim /etc/hosts
+  238  cd ..
+  239  git pull
+  240  git status
+  241  rm app4/docker-compose.yml 
+  242  git status
+  243  git pull
+  244  git status
+  245  cd ..
+  246  git clone https://github.com/a0z9/k8s
+  247  cd k8s
+  248  cat /etc/hosts
+  249  ./install_k8s_flannel.sh 
+  250  sudo service kubelet status
+  251  k
+  252  k cluster-info
+  253  k get nodes 
+  254  k get nodes -oyaml
+  255  k get nodes
+  256  kubeadm token create --help
+  257  kubeadm token create --print-join-coomand
+  258  kubeadm token create --print-join-command
+  259  k get nodes
+  260  k get nodes dock02
+  261  k get nodes dock02 -oyaml
+  262  kubeadm token create --print-join-coomand
+  263  kubeadm token create --print-join-command
+  264  watch k get nodes
+  265  watch kubectl get nodes
+  266  sudo service kubelet status
+  267  date
+  268  sudo service kubelet restart
+  269  sudo service kubelet status
+  270  k cluster-info 
+  271  k get nodes
+  272  sudo service kubelet status
+  273  cd k8s
+  274  install_kube_dashboard.sh 
+  275  ./install_kube_dashboard.sh 
+  276  k get ns
+  277  vim  install_kube_dashboard.sh 
+  278  k get service -n kubernetes-dashboard 
+  279  k get service --all-namespaces 
+  280  k create token -n kubernetes-dashboard admin-user 
+  281  history
+  282  mkdir history 
+  283  history > history/DAY3
+  284  git add .
+  285  git status
+  286  git commit -m 'history and dashboard manifest edit'
+  287  git push 
+  288  k get sa -n kubernetes-dashboard 
+  289  k get sa -n kubernetes-dashboard admin-user -oyaml
+  290  k create token -n kubernetes-dashboard admin-user --duration 4h
+  291  k get service -n kubernetes-dashboard kubernetes-dashboard 
+  292  k get service -n kubernetes-dashboard kubernetes-dashboard -oyaml
+  293  jq -r '{"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"k8s-app":"kubernetes-dashboard"},"name":"kubernetes-dashboard","namespace":"kubernetes-dashboard"},"spec":{"ports":[{"port":443,"targetPort":8443}],"selector":{"k8s-app":"kubernetes-dashboard"}}}'
+  294  sudo apt install jq
+  295  jq -r '{"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"k8s-app":"kubernetes-dashboard"},"name":"kubernetes-dashboard","namespace":"kubernetes-dashboard"},"spec":{"ports":[{"port":443,"targetPort":8443}],"selector":{"k8s-app":"kubernetes-dashboard"}}}'
+  296  jq  '{"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"k8s-app":"kubernetes-dashboard"},"name":"kubernetes-dashboard","namespace":"kubernetes-dashboard"},"spec":{"ports":[{"port":443,"targetPort":8443}],"selector":{"k8s-app":"kubernetes-dashboard"}}}'
+  297  echo  '{"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"k8s-app":"kubernetes-dashboard"},"name":"kubernetes-dashboard","namespace":"kubernetes-dashboard"},"spec":{"ports":[{"port":443,"targetPort":8443}],"selector":{"k8s-app":"kubernetes-dashboard"}}}' | jq .
+  298  echo  '{"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"k8s-app":"kubernetes-dashboard"},"name":"kubernetes-dashboard","namespace":"kubernetes-dashboard"},"spec":{"ports":[{"port":443,"targetPort":8443}],"selector":{"k8s-app":"kubernetes-dashboard"}}}' | jq . > install_dboard_k8s_svc.json
+  299  vim install_dboard_k8s_svc.json 
+  300  k apply -f install_dboard_k8s_svc.json 
+  301  k delete -f install_dboard_k8s_svc.json 
+  302  k get pods --all-namespaces 
+  303  k get pods --all-namespaces  | wc -l
+  304  k get pods -n kube-system 
+  305  k cluster-info -oyaml
+  306  k cluster-info 
+  307  k get nodes dock01 -oyaml
+  308  k create ns learn
+  309  k create pod -n learn wap_pod a0z9/dock:wapp.0.5
+  310  k create pod --help
+  311  k run -n learn wap_pod --image=a0z9/dock:wapp.0.5 --port 8080
+  312  k run -n learn wap-pod --image=a0z9/dock:wapp.0.5 --port 8080
+  313  k get pod -n learn 
+  314  k get pod -n learn -oyaml
+  315  ip a
+  316  ping 10.244.0.1
+  317  ping 10.244.0.2
+  318  ping 10.244.0.3
+  319  ping 10.244.1.3
+  320  k get pod -n learn wap-pod 
+  321  k get pod -n learn wap-pod -oyam
+  322  k get pod -n learn wap-pod -owile
+  323  k get pod -n learn wap-pod -owide
+  324  cat ../.kube/config 
+  325  history
+  326  history > history/day4-dock01
+  327  git add .
+  328  git status
+  329  git commit -m 'commands history, day4'
+  330  git push
+  331  k delete -n learn 
+  332  k delete namespaces learn
+  333  k get pod -n learn wap-pod -owide
+  334  k create namespace learn
+  335  k create deployment -n learn wap-depl --image=a0z9/dock:wapp.0.5 --port 8080 --replicas 2
+  336  k get deployments 
+  337  k get deployments -n learn 
+  338  k set image -n learn wap-depl  a0z9/dock=a0z9/dock:wapp.0.1
+  339  k set image -n learn deployment/wap-depl  a0z9/dock=a0z9/dock:wapp.0.1
+  340  k set image -n learn deployment/wap-depl  a0z9/dock:wapp.0.1
+  341  k set image -n learn deployment/wap-depl  wap=a0z9/dock:wapp.0.1
+  342  k set image  deployment/wap-depl  wap=a0z9/dock:wapp.0.1
+  343  k set image -n learn deployment/wap-depl  wap-depl=a0z9/dock:wapp.0.1
+  344  k set image deployment -n learn deployment/wap-depl  wap-depl=a0z9/dock:wapp.0.1
+  345  k set image deployment -n learn wap-depl  wap-depl=a0z9/dock:wapp.0.1
+  346  k set image deployment -n learn wap-depl  wap-depl-98d4557b7-pwcbr=a0z9/dock:wapp.0.1
+  347  k set image deployment -n learn wap-depl  wap-depl-98d4557b7=a0z9/dock:wapp.0.1
+  348  k set image deployment -n learn wap-depl  wap-depl-98d4557b7=a0z9/dock:wapp.0.1 -all
+  349  k set image deployment -n learn wap-depl  wap-depl-98d4557b7=a0z9/dock:wapp.0.1 --all
+  350  k set image deployment -n learn  wap-depl-98d4557b7-pwcbr=a0z9/dock:wapp.0.1
+  351  k set image --help
+  352  k set image deployments -n learn *=a0z9/dock:wapp.0.1
+  353  k set image deployments -n learn wap-depl *=a0z9/dock:wapp.0.1
+  354  k set image deployments -n learn wap-depl *=a0z9/dock:wapp.0.5
+  355  k set resources --help
+  356  k set resources deployments -n learn wap-depl --limit='cpu=500m,memory=200Mi'
+  357  k set resources deployments -n learn wap-depl --limits='cpu=500m,memory=200Mi'
+  358  k get namespaces 
+  359  k create token -n kubernetes-dashboard admin-user --duration 4h
+  360  k expose deployment -n learn wap-depl --name wap-svc --target-port=8080 --port 8090
+  361  k set image deployments -n learn *=a0z9/dock:wapp.0.1
+  362  k set image deployments -n learn wap-depl *=a0z9/dock:wapp.0.1
+  363  k get service -n learn wap-svc -owide
+  364  k get service -n kubernetes-dashboard kubernetes-dashboard -owide
+  365  ls -la
+  366  wget https://github.com/pythianarora/total-practice/blob/master/sample-kubernetes-code/metrics-server.yaml
+  367  vim metrics-server.yaml 
+  368  rm metrics-server.yaml 
+  369  wget https://raw.githubusercontent.com/pythianarora/total-practice/master/sample-kubernetes-code/metrics-server.yaml
+  370  k apply -f  metrics-server.yaml 
+  371  k cluster-info 
+  372  k set resources deployments -n learn bbox-stress --limits='cpu=200m,memory=20Mi'
+  373  vim install-stress-test.yaml
+  374  k apply -f install-stress-test.yaml
+  375  history > history/day4-dock01-2 
