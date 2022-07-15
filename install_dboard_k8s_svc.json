@@ -1,0 +1,23 @@
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "annotations": {},
+    "labels": {
+      "k8s-app": "kubernetes-dashboard-2"
+    },
+    "name": "kubernetes-dashboard-2",
+    "namespace": "kubernetes-dashboard"
+  },
+  "spec": {
+    "ports": [
+      {
+        "port": 443,
+        "targetPort": 9443
+      }
+    ],
+    "selector": {
+      "k8s-app": "kubernetes-dashboard-2"
+    }
+  }
+}
