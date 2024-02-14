@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: greets-multi
+  namespace: student
+
+spec:
+  ttlSecondsAfterFinished: 125
+  backoffLimit: 3
+  # activeDeadlineSeconds: 120
+  completions: 4 
+  parallelism: 2
+  template:
+    spec:
+            #imagePullSecrets:
+            #  - name: dock5001        
+      containers:
+        - name: greets
+          #image: dock01:5001/bbox:oct
+          image: busybox:1.36.1
+          command: 
+           - /bin/sh
+           - -c
+           - |
+             echo Hello, Student! Start job... 
+             sleep 25 
+             echo Job is done, by!
+#        exit 1 
+
+      restartPolicy: Never
+

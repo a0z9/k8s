@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: greets2-err
+
+spec:
+  backoffLimit: 3
+  activeDeadlineSeconds: 60
+  template:
+    spec:
+      containers:
+        - name: greets2
+          image: busybox
+          command: ["/bin/sh"]
+          args: ["-c", "echo Hello, Andrei! Start job... && sleep 15 && echo ..its done, by! && exit 1"]      
+
+      restartPolicy: Never    

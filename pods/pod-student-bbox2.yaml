@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: students-pod-dock02
+  namespace: student
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: dock03     
+  containers:
+    - name: bb1
+      image: busybox
+      command:
+        - /bin/sh
+        - -c
+        - |
+          echo test students bbox started!
+          sleep 15
+          ping 8.8.8.8 &
+          sleep 15
+          kill %1
+          echo test finished!
+          sleep 35
+
+    - name: bb2
+      image: busybox
+      command:
+        - /bin/sh
+        - -c
+        - |
+          echo test students bbox started!
+          sleep 25
+          ping 8.8.8.8 &
+          sleep 25
+          kill %1
+          echo test finished!
+          sleep 15
+
+  restartPolicy: OnFailure           

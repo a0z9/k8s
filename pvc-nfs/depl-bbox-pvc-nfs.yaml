@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pvc-nfs-depl
+  namespace: student
+  labels:
+    app: sv2
+    mntr: a0z9-at-rambler
+spec:
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: sv2
+  template:
+    metadata:
+      labels:
+        app: sv2    
+    spec:
+      imagePullSecrets:
+        - name: dock5001
+      containers:
+        - name: bbox
+          image: dock01:5001/bbox:oct
+          command:
+            - bin/sh
+            - -c
+            - |
+              echo Test bbox start, $HOSTNAME
+              RAN=$(($RANDOM % 12))
+              sleep $RAN
+              echo "$HOSTNAME ($RAN)  `date`" >> /mydata/data
+              RAN=$(($RANDOM % 13))
+              sleep $RAN
+              echo "$HOSTNAME ($RAN)  `date`" >> /mydata/data
+              ping 8.8.8.8 
+              
+          volumeMounts:
+          - name: vol2
+            mountPath: /mydata
+      volumes:
+        - name: vol2
+          persistentVolumeClaim:
+            claimName: pvc-nfs
+

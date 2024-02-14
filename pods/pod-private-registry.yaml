@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+        name: bbox-private
+        namespace: student
+
+spec:
+        containers:
+        - name: bbox-private-container
+          image: dock01:5001/bbox:nov
+          command: ["ping"]
+          args: ["8.8.8.8"]
+
+        imagePullSecrets:
+        - name: dock5001
+          

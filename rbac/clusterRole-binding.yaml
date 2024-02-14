@@ -1,0 +1,15 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+    name: readers-all-bind
+
+subjects:
+        - kind: ServiceAccount
+          name: help-desk 
+          namespace: help-desk
+
+roleRef:
+          kind: ClusterRole
+          name: readers-unlimited
+          apiGroup: 'rbac.authorization.k8s.io'         
+

@@ -1,0 +1,17 @@
+---
+#kind: Namespace
+#apiVersion: v1
+#metadata:
+#  name: student
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: training
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: student2
+
+  

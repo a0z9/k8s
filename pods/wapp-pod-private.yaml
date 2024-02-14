@@ -1,0 +1,19 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+  name: wapp-pod5-1
+  namespace: student
+  labels:
+    var1: data
+
+spec:
+  imagePullSecrets:
+  - name: dock5001
+
+  containers:
+  - image: dock01:5001/wapp:0.5
+    name: wapp-pod-5-1
+    env:
+    - name: DOCK_HOST
+      value: HOST-POD  

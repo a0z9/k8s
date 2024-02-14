@@ -1,0 +1,48 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: bbox-stress-2
+  namespace: learn
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      k8s-app: bbox-stress-2
+  template:
+    metadata:
+      name: bbox-stress-2
+      creationTimestamp: null
+      labels:
+        k8s-app: bbox-stress-2
+      annotations:
+    spec:
+      containers:
+        - name: bbox-stress-2
+          image: busybox
+          command:
+            - /bin/sh
+          args:
+            - '-c'
+            - dd if=/dev/zero of=/dev/null bs=4096
+          resources:
+            limits:
+              cpu: 100m
+              memory: 10Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+

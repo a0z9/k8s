@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: bb2-deploy
+  namespace: training
+  labels:
+    app: bb2
+
+spec:
+  selector:
+    matchLabels:
+      app: bb2
+
+  replicas: 2
+
+  template:
+    metadata:
+      labels:
+        app: bb2
+
+    spec:
+      containers:
+        - image: busybox
+          name: bbox-hl
+          command:
+            - bin/sh
+            - -c
+            - dd if=/dev/random of=/dev/null
+
+          resources:
+            limits:
+              cpu: "150m"
+              memory: 30M
+

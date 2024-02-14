@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: students-pod
+  namespace: student
+spec:
+  containers:
+    - name: bb1
+      image: busybox
+      command:
+        - /bin/sh
+        - -c
+        - |
+          echo test students bbox started!
+          sleep 15
+          ping 8.8.8.8 &
+          sleep 15
+          kill %1
+          echo test finished!
+          sleep 15
+
+  restartPolicy: OnFailure           

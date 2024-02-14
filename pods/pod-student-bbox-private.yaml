@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: students-pod-private
+  namespace: student
+spec:
+  containers:
+    - name: bb1
+      image: dock01:5002/bbox:latest
+      command:
+        - /bin/sh
+        - -c
+        - |
+          echo test students bbox started!
+          sleep 15
+          ping 8.8.8.8 &
+          sleep 15
+          kill %1
+          echo test finished!
+          sleep 150
+  restartPolicy: OnFailure
+  imagePullSecrets:
+    - name: dock5002
+

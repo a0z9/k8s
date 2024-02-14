@@ -1,0 +1,18 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+  name: wapp-pod5
+  namespace: student
+  labels:
+    var1: data
+
+spec:
+  nodeSelector:
+    cpu: 16cores              
+  containers:
+    - image: a0z9/dock:wapp.0.5
+      name: wapp-pod-5
+      env:
+        - name: DOCK_HOST
+          value: HOST-POD  

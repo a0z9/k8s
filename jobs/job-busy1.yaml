@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: greets3
+  namespace: student
+
+spec:
+  backoffLimit: 3
+  #  activeDeadlineSeconds: 120
+  template:
+    spec:
+     #imagePullSecrets:
+     #  - name: dock5001
+      containers:
+        - name: greets
+          image: busybox:1.36
+          #image: dock01:5001/bbox:oct
+          command: 
+           - /bin/sh
+           - -c
+           - |
+             echo Hello, Student! Start job... 
+             sleep 15 
+             echo Job is done, by!
+             #exit 1 
+
+      restartPolicy: Never
+

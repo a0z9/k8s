@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+        name: bbox-private-loads
+        namespace: student
+
+spec:
+        containers:
+        - name: bbox-loads
+          image: dock01:5002/bbox:1.36.1
+          command: ["dd"]
+          args: ["if=/dev/zero","of=/dev/null","bs=4096"]
+          resources:
+            limits:
+              cpu: "250m"
+              memory: 30Mi
+
+        imagePullSecrets:
+        - name: dock5002-admin
+          
+          

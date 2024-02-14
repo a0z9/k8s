@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bb2-hiload
+  namespace: student
+  labels:
+    app: bbox2
+spec:
+  selector:
+    matchLabels:
+      app: bbox2
+  replicas: 1
+  strategy:
+    type: RollingUpdate  
+  template:
+    metadata:
+      labels:
+        app: bbox2
+    spec:
+      containers:
+      - name: bbox-loads
+        image: busybox
+        command: 
+          - /bin/sh
+          - -c
+          - |
+            echo 'Test 1 prepare.. wait 30 seconds..'
+            sleep 30
+            echo 'CPU load test start. wait 60 sec'
+            # dd if=/dev/zero of=/dev/null bs=4096 count=60000000
+            dd if=/dev/zero of=/dev/null bs=4096 &
+            sleep 45
+            kill $!
+            echo 'Test 1 end'
+            echo 'Test 2 prepare.. wait 30 seconds..'
+            sleep 30
+            echo 'CPU test 2 start. wait 60 sec'
+            dd if=/dev/zero of=/dev/null bs=4096 &
+            sleep 45 
+            kill $!
+            echo 'CPU test 2 end'
+            echo 'End of cpu load script, start pinging ggl..'
+            ping 8.8.8.8
+
+        resources:
+            limits:
+              cpu: 750m
+              memory: 40Mi
+

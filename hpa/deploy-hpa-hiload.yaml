@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bbox-hpa-deploy
+  namespace: student
+  labels:
+    app: bbox-hpa
+
+spec:
+  selector:
+    matchLabels:
+      app: bbox-hpa        
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  
+  template:
+    metadata:
+      labels:
+        app: bbox-hpa        
+    spec:
+      imagePullSecrets:
+        - name: dock5001      
+      containers:
+        - name: greets
+          image: dock01:5001/bbox:nov
+          command: 
+           - /bin/sh
+           - -c
+           - |
+             echo Test 1 prepare, 30 sec... 
+             sleep 30
+             echo Test 1 starts, 60 sec 
+             dd if=/dev/zero of=/dev/null bs=4096 &
+             sleep 60
+             kill $!
+             echo Test 1 finished.. start pinging
+             ping 8.8.8.8 
+
+          resources:  
+            limits:
+              cpu: 350m
+              memory: 30Mi
+

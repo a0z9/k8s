@@ -1,0 +1,21 @@
+apiVersion: v1
+
+kind: Pod
+metadata:
+  name: bbox-hiload-pod
+  namespace: training
+
+spec:
+  containers:
+    - image: busybox
+      name: bbox-hl
+      command: 
+        - bin/sh
+        - -c
+        - dd if=/dev/random of=/dev/null
+      
+      resources:
+        limits:
+          cpu: "150m"
+          memory: 30M
+

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-20m
+  namespace: student
+  labels:
+    vol: shared
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Mi
+  storageClassName: mystore # use standard - for GKE, do-block-storage - for DO, azurefile-csi - for AKS,...
+  volumeName: pv
+#  selector:
+#    matchLabels:
+#      type: local

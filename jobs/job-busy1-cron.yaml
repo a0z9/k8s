@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: greets-cron
+  namespace: student
+
+spec:
+  schedule: "*/10 * * * 1-5"
+  concurrencyPolicy: Allow
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+        spec:
+          backoffLimit: 2
+          activeDeadlineSeconds: 60
+       #  ttlSecondsAfterFinished: 15 # Job del after 15s
+          template:
+            spec:
+                    #imagePullSecrets:
+                    #   - name: dock5001
+              containers:
+                - name: greets-cron
+                  #image: dock01:5001/bbox:1.36
+                  image: busybox:1.36
+                  command: ["/bin/sh"]
+                  args: ["-c", "echo Hello, Andrei! Start job at `date` ... && sleep 11 && echo Job is fininished, by!"]      
+
+              restartPolicy: Never    
